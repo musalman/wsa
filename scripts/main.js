@@ -39,14 +39,16 @@
     var rateText = document.getElementById('rate-text');
     var rating = document.getElementById('rating');
     rateButton.addEventListener('click', function() {
-      var text = rateText.value;
-      var score = classifier.classify(text);
-      if (score > 0) {
-        rating.className = 'positive';
-      } else {
-        rating.className = 'negative';
+      if(rateText.value.length>0){
+        var text = rateText.value;
+        var score = classifier.classify(text);
+        if (score > 0) {
+          rating.className = 'positive';
+        } else {
+          rating.className = 'negative';
+        }
+        rating.textContent = 'Score ' + score.toFixed(3);
       }
-      rating.textContent = 'Score ' + score.toFixed(3);
     });
   }
 
